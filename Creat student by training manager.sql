@@ -1,14 +1,13 @@
 USE [Examination system]
 GO
 
-
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-alter PROC [dbo].[CreateStudent]
+CREATE PROC [dbo].[CreateStudent]
     @name NVARCHAR(50),
     @age INT,
     @address NVARCHAR(50),
@@ -17,7 +16,7 @@ alter PROC [dbo].[CreateStudent]
     @classID INT
 AS
 BEGIN
-    
+    SET NOCOUNT ON;
 
     BEGIN TRY
         INSERT INTO [dbo].[Student]
@@ -25,18 +24,12 @@ BEGIN
          VALUES
                (@name, @age, @address, @phone, @intakeID, @classID);
 
-        SELECT 'Student created successfully.';
+        PRINT 'Student created successfully.';
     END TRY
     BEGIN CATCH
-        SELECT 'An error occurred while creating the student. Error: ' + ERROR_MESSAGE();
+        PRINT 'An error occurred while creating the student. Error: ' + ERROR_MESSAGE();
     END CATCH
 END;
 GO
 
 
-
-
-
-EXEC [dbo].[CreateStudent] 'Eman' ,12,'cairo','01001214712',1,1;
-
-SELECT* FROM dbo.Student

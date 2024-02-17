@@ -1,0 +1,18 @@
+Student login
+UserName Student
+password Student123
+
+Instrustor login
+UserName instructor
+password instructor123
+
+
+
+Manager login
+UserName TrainingManager
+password Manager123
+        
+
+Admin login
+UserName Admin
+password Admin123
